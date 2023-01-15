@@ -1,2 +1,0 @@
-# bemyzentinel
-Chat for Android
