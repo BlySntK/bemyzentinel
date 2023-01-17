@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/fullscreenBackgroundColor"
+    android:theme="@style/ThemeOverlay.BeMyZentinel.FullscreenContainer"
+    tools:context=".OpenChatWithUser">
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/full_screen_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/light_blue_600">
+
+            <ListView
+                android:id="@+id/chat_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/full_screen_button"
+            style="@style/Widget.Theme.BeMyZentinel.ButtonBar.Fullscreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+
+            <ImageButton
+                android:id="@+id/send_button"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:translationX="350dp"
+                android:translationZ="2dp"
+                android:src="@drawable/ic_launcher_background"/>
+
+            <EditText
+                android:id="@+id/send_new_message"
+                android:layout_width="410dp"
+                android:layout_height="50dp"
+                android:text="Escribe algo"
+                android:translationX="-50dp"
+                android:background="@color/white"/>
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

@@ -1,4 +1,4 @@
-package com.blairsaintklaus.bemyzentinel;
+package com.blairsaintklaus.mainlistchat;
 
 import org.junit.Test;
 

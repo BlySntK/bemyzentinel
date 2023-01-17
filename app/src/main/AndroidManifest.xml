@@ -20,6 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.blairsaintklaus.sendthezentinel.OpenChatWithUser"
+            android:theme="@style/Theme.BeMyZentinel.Fullscreen"/>
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.blairsaintklaus.bemyzentinel"
+        applicationId "com.blairsaintklaus.mainlistchat"
         minSdk 26
         targetSdk 32
         versionCode 1
@@ -28,7 +28,7 @@ android {
     buildFeatures {
         viewBinding true
     }
-    namespace 'com.blairsaintklaus.bemyzentinel'
+    namespace 'com.blairsaintklaus.mainlistchat'
 }
 
 dependencies {

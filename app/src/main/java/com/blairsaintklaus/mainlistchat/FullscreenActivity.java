@@ -1,6 +1,7 @@
-package com.blairsaintklaus.bemyzentinel;
+package com.blairsaintklaus.mainlistchat;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Build;
@@ -9,8 +10,14 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
-
-import com.blairsaintklaus.bemyzentinel.databinding.ActivityFullscreenBinding;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import com.blairsaintklaus.adapters.ChatAdapter;
+import com.blairsaintklaus.daos.Mensaje;
+import com.blairsaintklaus.mainlistchat.databinding.MainActivityfullscreenBinding;
+import com.blairsaintklaus.sendthezentinel.OpenChatWithUser;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Una activity full-screen que muestra y oculta la UI de sistema, como
@@ -33,8 +40,11 @@ public class FullscreenActivity extends AppCompatActivity {
      */
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler hideHandler = new Handler();
-    private ActivityFullscreenBinding binding;
+    private MainActivityfullscreenBinding binding;
     private View contentView;
+    private ListView chat_list;
+    private ChatAdapter adapter_chat;
+    private List<Mensaje> list_chat;
     private View controlsView;
     private boolean visible;
 
@@ -42,12 +52,18 @@ public class FullscreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityFullscreenBinding.inflate(getLayoutInflater());
+        binding = MainActivityfullscreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         visible = true;
         controlsView = binding.fullScreenButton;
         contentView = binding.fullScreenList;
+        list_chat = new ArrayList<>();
+        adapter_chat = new ChatAdapter(
+                this, R.layout.item_message_received, list_chat);
+
+        chat_list = (ListView) findViewById(R.id.chat_list);
+        chat_list.setAdapter((ChatAdapter) adapter_chat);
 
         // Se hace para que el usuario interaccione manualmente y muestre
         // la UI de sistema o no.
@@ -55,6 +71,15 @@ public class FullscreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 toggle();
+            }
+        });
+
+        ImageButton sendButton = findViewById(R.id.new_chat);
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), OpenChatWithUser.class);
+                startActivity(intent);
             }
         });
 
